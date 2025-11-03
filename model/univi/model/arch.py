@@ -233,6 +233,7 @@ class ChatUniViMetaForCausalLM(ABC):
         new_labels = [] if labels is not None else None
         cur_image_idx = 0
         for batch_idx, cur_input_ids in enumerate(input_ids):
+            print(f'IMAGE TOKEN INDEX: {IMAGE_TOKEN_INDEX}')
             if (cur_input_ids == IMAGE_TOKEN_INDEX).sum() == 0:
                 # multimodal LLM, but the current sample is not multimodal
                 cur_input_embeds = self.get_model().embed_tokens(cur_input_ids)
